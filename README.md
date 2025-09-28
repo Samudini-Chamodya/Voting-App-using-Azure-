@@ -313,21 +313,12 @@ Create and configure the AKS cluster for our application deployment.
 
 **AKS Setup Commands:**
 ```bash
-# Create AKS cluster
-az aks create \
-  --resource-group azureCICD \
-  --name voting-app-cluster \
-  --node-count 3 \
-  --node-vm-size Standard_DS2_v2 \
-  --enable-addons monitoring \
-  --generate-ssh-keys
 
 # Get cluster credentials
 az aks get-credentials --resource-group azureCICD --name voting-app-cluster
 
 # Verify cluster connection
 kubectl get nodes
-kubectl cluster-info
 ```
 
 ### 7. ArgoCD Setup and Configuration
@@ -395,29 +386,6 @@ kubectl port-forward svc/argocd-server -n argocd 8080:443
    - Password: Personal Access Token
 4. Click **Connect**
 
-**ArgoCD Application Configuration:**
-```yaml
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: voting-app
-  namespace: argocd
-spec:
-  project: default
-  source:
-    repoURL: https://dev.azure.com/your-org/voting-app/_git/voting-app
-    targetRevision: HEAD
-    path: k8s-specifications
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: default
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-    syncOptions:
-    - CreateNamespace=true
-```
 
 ### 9. CI/CD Pipeline in Action
 
@@ -549,8 +517,3 @@ This implementation demonstrates a production-ready CI/CD pipeline using Azure D
 
 The setup provides a solid foundation for scaling applications and can be adapted for various use cases, technologies, and organizational requirements.
 
-
-**Project Repository**: [Insert your Azure DevOps repository URL here]  
-**Azure DevOps Project**: [Insert your Azure DevOps project URL here]  
-**Live Application**: [Insert your application URL here]  
-**ArgoCD Dashboard**: [Insert your ArgoCD dashboard URL here]
