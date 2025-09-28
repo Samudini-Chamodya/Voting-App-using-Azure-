@@ -455,6 +455,11 @@ The application now features:
 - **Scalability** through AKS
 - **Zero-downtime deployments** with rolling updates
 
+#### Complete CI/CD Pipeline Dashboard
+![complete Pipeline](screenshots/cicd-pipeline-dashboard.png)
+Figure 19: Complete CI/CD pipeline dashboard showing end-to-end automation
+
+
 **Application Access:**
 ```bash
 # Get application services
