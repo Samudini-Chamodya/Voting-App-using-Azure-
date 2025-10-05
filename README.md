@@ -95,8 +95,6 @@ Before starting the implementation, ensure you have:
 
 The first step is to import the voting application source code from a Git repository into Azure DevOps Repos.
 
-![Git Repository Import](screenshots/gitImport.png)
-*Figure 2: Importing Git repository into Azure DevOps Repos*
 
 **Steps to Import Repository:**
 1. Navigate to Azure DevOps project
